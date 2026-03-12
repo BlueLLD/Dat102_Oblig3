@@ -122,28 +122,55 @@ public class LenketMengde<T> implements MengdeADT<T> {
 
     @Override
     public void leggTilAlleFra(MengdeADT<T> annenMengde) {
-
+        //henter ut alle elementer fra annenMengde som array
+        T[] andreElementer = annenMengde.tilTabell();
+        //Har en tabell med elementer. bruker for-loop for å legge de til
+        for (int i = 0; i < andreElementer.length; i++){
+            leggTil(andreElementer[i]);
+        }
     }
 
     @Override
     public T fjern(T element) {
         Node gjeldende = forste;
         if (forste.data.equals(element)) {
-            T data = forste.data;
+            T data = forste.data;//Hente data som skal returneres
             forste = forste.neste;
             antall--;
             return data;
-            //ikke ferdig
+
         }
+        //lager Node forrige slik at forrige og neste kan knyttes sammen
+        Node forrige = gjeldende;
+        gjeldende = gjeldende.neste;
 
-
-
+        //looper oppover nodelisten og sjekker om noen har elementet som skal fjernes
+        while(gjeldende != null) {
+            if (gjeldende.data.equals(element)) {
+                T data = gjeldende.data;//henter data
+                forrige.neste = gjeldende.neste;//bypasser gjeldende node
+                antall--;
+                return data;
+            }
+            //løkken kjøres videre
+            forrige = gjeldende;//flytter forrige en frem
+            gjeldende = gjeldende.neste;//flytter gjeldende en frem
+        }
         return null;
     }
 
     @Override
     public T[] tilTabell() {
-        return null;
+        Node gjeldende = forste;
+        //oppretter ny tabell med generisk datatype
+        T[] tabell = (T[]) new Object[antall];
+        int i = 0;
+        while (gjeldende != null){
+            tabell[i] = gjeldende.data;
+            i++;
+            gjeldende = gjeldende.neste;
+        }
+        return tabell;
     }
 
 
