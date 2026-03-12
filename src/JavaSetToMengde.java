@@ -63,8 +63,16 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public MengdeADT<T> union(MengdeADT<T> annenMengde) {
-
-        return null;
+        MengdeADT<T> resultat = new JavaSetToMengde<>();
+        for (T element : set) {
+            resultat.leggTil(element);
+        }
+        for (T element : annenMengde.toArray()) {
+            if (!set.contains(element)) {
+                resultat.leggTil(element);
+            }
+        }
+        return resultat;
     }
 
     @Override
@@ -89,7 +97,15 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public T[] tilTabell() {
-        return null;
+        
+        T[] tabell = new T[antall];
+        int i = 0;
+        while (gjeldende != null) {
+            tabell[i] = gjeldende.data;
+            i++;
+            gjeldende = gjeldende.neste;
+        }
+        return tabell;
     }
 
     @Override
