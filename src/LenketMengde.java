@@ -163,6 +163,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
     public T[] tilTabell() {
         Node gjeldende = forste;
         //oppretter ny tabell med generisk datatype
+        //
         T[] tabell = (T[]) new Object[antall];
         int i = 0;
         while (gjeldende != null){

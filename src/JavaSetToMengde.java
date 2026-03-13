@@ -30,12 +30,11 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
     @Override
     public boolean erLik(MengdeADT<T> annenMengde) {
         for (T element : set) {
-            if (!annenMengde.inneholder(element)) {
-                return false;
-            }
+            return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
         }
-        return true;
+        return false;
     }
+
 
     @Override
     public boolean erDisjunkt(MengdeADT<T> annenMengde) {
@@ -49,8 +48,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public MengdeADT<T> snitt(MengdeADT<T> annenMengde) {
-        MengdeADT<T> resultat = new JavaSetToMengde<>() {
-        };
+        MengdeADT<T> resultat = new JavaSetToMengde<>();
 
         for (T element : set) {
             if (annenMengde.inneholder(element)) {
@@ -67,7 +65,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
         for (T element : set) {
             resultat.leggTil(element);
         }
-        for (T element : annenMengde.toArray()) {
+        for (T element : annenMengde.tilTabell()) {
             if (!set.contains(element)) {
                 resultat.leggTil(element);
             }
@@ -77,8 +75,17 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public MengdeADT<T> minus(MengdeADT<T> annenMengde) {
-        return null;
+        JavaSetToMengde<T> nyMengde = new JavaSetToMengde<>();
+        //set - annenmengde = svar
+        for (T element : set) {
+            if (!annenMengde.inneholder(element)) {
+                nyMengde.leggTil(element);
+            }
+        }
+        return nyMengde;
     }
+
+
 
     @Override
     public void leggTil(T element) {
@@ -87,29 +94,36 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public void leggTilAlleFra(MengdeADT<T> annenMengde) {
-
+        T[] andreElementer = annenMengde.tilTabell();
+        for (T element : andreElementer) {
+            leggTil(element); //Fra add-metode. set.add sjekker om det er der fra før
+        }
     }
 
     @Override
     public T fjern(T element) {
+        if (set.remove(element)){
+            return element;
+        }
         return null;
     }
 
     @Override
     public T[] tilTabell() {
-        
-        T[] tabell = new T[antall];
+        //setter størrelsen på array ved [set.size()]
+        //set.size returnerer antall elementer i settet.
+        T[] tabell = (T[]) new Object[set.size()];
         int i = 0;
-        while (gjeldende != null) {
-            tabell[i] = gjeldende.data;
+        for (T element : set) {
+            tabell[i] = element;
             i++;
-            gjeldende = gjeldende.neste;
         }
+
         return tabell;
     }
 
     @Override
     public int antallElementer() {
-        return 0;
+        return set.size();
     }
 }
