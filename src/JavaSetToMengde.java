@@ -29,10 +29,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public boolean erLik(MengdeADT<T> annenMengde) {
-        for (T element : set) {
             return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
-        }
-        return false;
     }
 
 
