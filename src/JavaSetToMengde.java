@@ -106,6 +106,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] tilTabell() {
         //setter størrelsen på array ved [set.size()]
         //set.size returnerer antall elementer i settet.

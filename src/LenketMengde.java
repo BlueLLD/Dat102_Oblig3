@@ -63,11 +63,19 @@ public class LenketMengde<T> implements MengdeADT<T> {
         return true;
     }
 
-    @Override
-    public boolean erLik(MengdeADT<T> annenMengde) {
-        return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
-    }
+//    @Override
+//    public boolean erLik(MengdeADT<T> annenMengde) {
+//        return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
+//    }
 
+    //Christian
+    @Override
+    public boolean erLik(MengdeADT<T> annenMengde){
+        if (annenMengde.antallElementer() == this.antallElementer()) {
+            return this.erDelmengdeAv(annenMengde);
+        }
+        return false;
+    }
     @Override
     public boolean erDisjunkt(MengdeADT<T> annenMengde) {
         Node gjeldende = forste;

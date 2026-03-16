@@ -48,9 +48,12 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
     @Override
     public boolean erLik(MengdeADT<T> annenMengde) {
-        return this.erDelmengdeAv(annenMengde) && annenMengde.erDelmengdeAv(this);
-    }// den ene er delmengde av den andre og omvendt.
+        if (this.antallElementer() == annenMengde.antallElementer()) {
+            return this.erDelmengdeAv(annenMengde);
+        }
+        return false;
 
+    }
     @Override
     public boolean erDisjunkt(MengdeADT<T> annenMengde) {
         for (int i = 0; i < antall; i++) {
