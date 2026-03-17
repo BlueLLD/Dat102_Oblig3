@@ -5,19 +5,19 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JavaSetToMengdeTest {
+public class TabellMengdeTest {
 
-    JavaSetToMengde<String> mengde;
-    JavaSetToMengde<String> annenMengde;
+    TabellMengde<String> mengde;
+    TabellMengde<String> annenMengde;
 
     @BeforeEach
     void setup(){
-        mengde = new JavaSetToMengde<>();
+        mengde = new TabellMengde<>();
         mengde.leggTil("a");
         mengde.leggTil("b");
         mengde.leggTil("c");
 
-        annenMengde = new JavaSetToMengde<>();
+        annenMengde = new TabellMengde<>();
         annenMengde.leggTil("b");
         annenMengde.leggTil("c");
         annenMengde.leggTil("d");
@@ -25,7 +25,7 @@ public class JavaSetToMengdeTest {
 
     @Test
     void testAntallErTom(){
-        JavaSetToMengde<String> tomtabell = new JavaSetToMengde<>();
+        TabellMengde<String> tomtabell = new TabellMengde<>();
         assertTrue(tomtabell.erTom());
         assertFalse(annenMengde.erTom());
     }
@@ -37,25 +37,25 @@ public class JavaSetToMengdeTest {
 
     @Test
     void testErDelmengdeAv(){
-        JavaSetToMengde<String> c = new JavaSetToMengde<>();
+        TabellMengde<String> c = new TabellMengde<>();
         c.leggTil("c");
         assertTrue(c.erDelmengdeAv(annenMengde));
     }
 
     @Test
     void testErlik(){
-        JavaSetToMengde<String> c = new JavaSetToMengde<>();
+        TabellMengde<String> c = new TabellMengde<>();
         c.leggTil("c");
-        JavaSetToMengde<String> d = new JavaSetToMengde<>();
+        TabellMengde<String> d = new TabellMengde<>();
         d.leggTil("c");
         assertTrue(c.erLik(d));
     }
 
     @Test
     void testErDisjunkt(){
-        JavaSetToMengde<String> c = new JavaSetToMengde<>();
+        TabellMengde<String> c = new TabellMengde<>();
         c.leggTil("c");
-        JavaSetToMengde<String> d = new JavaSetToMengde<>();
+        TabellMengde<String> d = new TabellMengde<>();
         d.leggTil("c");
         assertFalse(c.erDisjunkt(d));
     }
@@ -126,9 +126,6 @@ public class JavaSetToMengdeTest {
         Arrays.sort(tabell);
         Arrays.sort(forventet);
         assertArrayEquals(forventet, tabell);
-        for (Object o : tabell) {
-
-        }
 
     }
 

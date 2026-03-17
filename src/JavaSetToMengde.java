@@ -64,10 +64,8 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
     @Override
     public MengdeADT<T> union(MengdeADT<T> annenMengde) {
         MengdeADT<T> resultat = new JavaSetToMengde<>();
-        for (T element : set) {
-            resultat.leggTil(element);
-        }
-        for (T element : annenMengde.toArray()) {
+        resultat.leggTilAlleFra(annenMengde);
+        for (T element : annenMengde.tilTabell()) {
             if (!set.contains(element)) {
                 resultat.leggTil(element);
             }
@@ -77,7 +75,14 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
 
     @Override
     public MengdeADT<T> minus(MengdeADT<T> annenMengde) {
-        return null;
+        JavaSetToMengde<T> nyMengde = new JavaSetToMengde<>();
+        //set - annenmengde = svar
+        for (T element : set) {
+            if (!annenMengde.inneholder(element)) {
+                nyMengde.leggTil(element);
+            }
+        }
+        return nyMengde;
     }
 
     @Override
@@ -88,28 +93,30 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
     @Override
     public void leggTilAlleFra(MengdeADT<T> annenMengde) {
 
+        set.addAll(Arrays.asList(annenMengde.tilTabell()));
+
     }
 
     @Override
     public T fjern(T element) {
-        return null;
+            set.remove(element);
+            return element;
     }
 
     @Override
     public T[] tilTabell() {
-        
-        T[] tabell = new T[antall];
+        T[] tabell = (T[])  new Object[set.size()];
         int i = 0;
-        while (gjeldende != null) {
-            tabell[i] = gjeldende.data;
+        for (T element : set) {
+            tabell[i] = element;
             i++;
-            gjeldende = gjeldende.neste;
         }
+
         return tabell;
     }
 
     @Override
     public int antallElementer() {
-        return 0;
+        return set.size();
     }
 }
