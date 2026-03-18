@@ -26,12 +26,12 @@ public class HobbyMainMatch {
         Person c = new Person("Bob Europa", "kartlesing", "blindeskrift", "kappgang",
                 "naruto");
 
-        double maa = match(a,a);
-        double mab = match(a,b);
-        double mac = match(a,c);
-        double mbc = match(b,c);
-
-        double[] tab = new double[]
+//        double maa = match(a,a);
+//        double mab = match(a,b);
+//        double mac = match(a,c);
+//        double mbc = match(b,c);
+//
+//        double[] tab = new double[]
 
         IO.println("Match score mellom a og a er: ");
         IO.println(match(a,a));
