@@ -1,12 +1,10 @@
-package DataStructures;
-
 /**
  * THIS IS NOT PART OF THE ASSIGNMENT
  * This is just a class made for fun to see how easy it is to implement an abstract class for MengdeADT
  * @param <T> Containing type
  * @param <S> Self
  */
-public abstract class AbstractMengde <T, S extends AbstractMengde<T,S>> implements MengdeADT<T>{
+public abstract class AbstractMengde <T, S extends AbstractMengde<T,S>> implements MengdeADT<T> {
 	abstract <C extends AbstractMengde<T, S>> C construct();
 
 	@Override

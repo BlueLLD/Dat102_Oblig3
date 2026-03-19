@@ -1,14 +1,11 @@
-package DataStructures;
-
 import java.util.HashSet;
-
 
 /**
  * THIS IS NOT PART OF THE ASSIGNMENT
  * An implementation of the AbstractMengde
  * @param <T> Containing type
  */
-public class Implementer<T> extends AbstractMengde<T, Implementer<T>>{
+public class Implementer<T> extends AbstractMengde<T, Implementer<T>> {
 	HashSet<T> elements = new HashSet<>();
 	@Override
 	@SuppressWarnings("unchecked")
