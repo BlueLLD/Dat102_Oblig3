@@ -32,7 +32,7 @@ public interface MengdeADT<T> {
     /**
      * @param annenMengde
      * @return Snittet av mengden og en annenMengde.
-     *         Metoden skal ikke endre pÃ¥ mengden eller annenMengde,
+     *         Metoden skal ikke endre på mengden eller annenMengde,
      *         men lage en ny mengde som blir resultatet.
      */
     MengdeADT<T> snitt(MengdeADT<T> annenMengde);
@@ -40,7 +40,7 @@ public interface MengdeADT<T> {
     /**
      * @param annenMengde
      * @return Unionen av mengden og en annenMengde.
-     *         Metoden skal ikke endre pÃ¥ mengden eller annenMengde,
+     *         Metoden skal ikke endre på mengden eller annenMengde,
      *         men lage en ny mengde som blir resultatet.
      */
     MengdeADT<T> union(MengdeADT<T> annenMengde);
@@ -48,22 +48,32 @@ public interface MengdeADT<T> {
     /**
      * @param annenMengde
      * @return Mengden minus annenMengde.
-     *         Metoden skal ikke endre pÃ¥ mengden eller annenMengde,
+     *         Metoden skal ikke endre på mengden eller annenMengde,
      *         men lage en ny mengde som blir resultatet.
      */
     MengdeADT<T> minus(MengdeADT<T> annenMengde);
 
     /**
      * Legger til et element i mengden. Elementet skal kun legges til hvis
-     * det ikke finnes i mengden fra fÃ¸r.
+     * det ikke finnes i mengden fra før.
      *
      * @param element
      */
     void leggTil(T element);
 
     /**
+     * Samme som leggTil men du kan legge til flere sammtidig
+     * @param elementer
+     */
+    default void leggTil(T ...elementer){
+        for(T element : elementer){
+            leggTil(element);
+        }
+    }
+
+    /**
      * Legger alle elementer fra en annenMengde til i mengden. Kun elementer
-     * som ikke finnes i mengden fra fÃ¸r, skal legges til.
+     * som ikke finnes i mengden fra før, skal legges til.
      *
      * @param annenMengde
      */
@@ -79,7 +89,7 @@ public interface MengdeADT<T> {
     T fjern(T element);
 
     /**
-     * @return En tabell av elementene i mengden. Tabellen har stÃ¸rrelse lik
+     * @return En tabell av elementene i mengden. Tabellen har størrelse lik
      *         antall elementer i mengden.
      */
     T[] tilTabell();

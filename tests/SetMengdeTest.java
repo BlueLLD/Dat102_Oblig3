@@ -1,13 +1,8 @@
-import DataStructures.JavaSetToMengde;
-import DataStructures.MengdeADT;
-import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SetMengdeTest extends AbstractMengdeTests<JavaSetToMengde<Object>> {
 
 	@Override
-	@NonNull JavaSetToMengde<Object> constructMengdeADT() {
+	JavaSetToMengde<Object> constructMengdeADT() {
 		return new JavaSetToMengde<>();
 	}
 	@Test

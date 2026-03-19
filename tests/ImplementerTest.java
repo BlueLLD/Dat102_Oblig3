@@ -1,6 +1,3 @@
-import DataStructures.Implementer;
-import org.jspecify.annotations.NonNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class ImplementerTest extends  AbstractMengdeTests<Implementer<Object>>{
 	@Override
-	@NonNull Implementer<Object> constructMengdeADT() {
+	Implementer<Object> constructMengdeADT() {
 		return new Implementer<>();
 	}
 	@Override

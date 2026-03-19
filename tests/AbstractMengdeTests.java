@@ -1,5 +1,3 @@
-import DataStructures.MengdeADT;
-import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +11,6 @@ abstract public class AbstractMengdeTests <T extends MengdeADT<Object>> {
 	T diff;
 
 
-	@NonNull
 	abstract T constructMengdeADT();
 
 	@BeforeEach
