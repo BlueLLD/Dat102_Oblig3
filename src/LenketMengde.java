@@ -20,10 +20,17 @@ public class LenketMengde<T> implements MengdeADT<T> {
     }
     @Override
     public void leggTil(T element) {
+        if (forste == null){
+            forste = new Node(element);
+            antall++;// ny node satt inn. Antallet må øke
+            return;
+        }
         if (!inneholder(element)){//Om elementet ikke finnes fra før
-            Node nyNode = new Node(element);//lager ny node
-            nyNode.neste = forste;//Peker på den gamle første
-            forste = nyNode;//første er nå nyNode
+            Node currentNode = forste;
+            while (currentNode.neste != null){
+                currentNode = currentNode.neste;
+            }
+            currentNode.neste = new Node(element);
             antall++;// ny node satt inn. Antallet må øke
         }
     }
@@ -171,12 +178,9 @@ public class LenketMengde<T> implements MengdeADT<T> {
     public T[] tilTabell() {
         Node gjeldende = forste;
         //oppretter ny tabell med generisk datatype
-        //
         T[] tabell = (T[]) new Object[antall];
-        int i = 0;
-        while (gjeldende != null){
+        for (int i = 0; i < antall; i++) {
             tabell[i] = gjeldende.data;
-            i++;
             gjeldende = gjeldende.neste;
         }
         return tabell;

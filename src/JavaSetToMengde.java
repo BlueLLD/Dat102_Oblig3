@@ -113,8 +113,7 @@ public class JavaSetToMengde<T> implements MengdeADT<T> {
         T[] tabell = (T[]) new Object[set.size()];
         int i = 0;
         for (T element : set) {
-            tabell[i] = element;
-            i++;
+            tabell[i++] = element;
         }
 
         return tabell;
